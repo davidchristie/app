@@ -8,6 +8,11 @@ export function App() {
       <ErrorBoundary>
         <Suspense fallback={<div data-testid="App__loading">Loading...</div>}>
           <Header />
+          <main>
+            <p>
+              <a href="/api/v1/auth/github/authorize">Sign in with GitHub</a>
+            </p>
+          </main>
         </Suspense>
       </ErrorBoundary>
     </div>

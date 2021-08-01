@@ -3,7 +3,6 @@ package http
 import (
 	"fmt"
 	"log"
-	"net"
 	"net/http"
 
 	"github.com/davidchristie/app/services/server/auth"
@@ -17,8 +16,7 @@ type Server interface {
 }
 
 type server struct {
-	base     *http.Server
-	listener net.Listener
+	base *http.Server
 }
 
 func NewServer(config *config.Config, auth auth.Auth) Server {
@@ -36,6 +34,6 @@ func (s *server) Close() error {
 }
 
 func (s *server) Start() error {
-	log.Println("Starting server on port", s.base.Addr)
+	log.Println("Starting server on", s.base.Addr)
 	return s.base.ListenAndServe()
 }
