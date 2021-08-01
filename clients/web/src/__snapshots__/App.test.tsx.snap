@@ -17,6 +17,17 @@ exports[`App once loading is complete renders correctly 1`] = `
 }
     </pre>
   </header>
+  <main
+    style=""
+  >
+    <p>
+      <a
+        href="/api/v1/auth/github/authorize"
+      >
+        Sign in with GitHub
+      </a>
+    </p>
+  </main>
 </div>
 `;
 
@@ -24,6 +35,17 @@ exports[`App while loading renders correctly 1`] = `
 <div
   data-testid="App"
 >
+  <main
+    style="display: none;"
+  >
+    <p>
+      <a
+        href="/api/v1/auth/github/authorize"
+      >
+        Sign in with GitHub
+      </a>
+    </p>
+  </main>
   <div
     data-testid="App__loading"
   >

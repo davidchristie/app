@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run unit tests
-        run: go test ./...
+        run: go test ./... -cover
 
   unit-tests-typescript:
     name: Unit Tests (TypeScript)
