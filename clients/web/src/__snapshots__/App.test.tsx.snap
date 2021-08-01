@@ -27,6 +27,13 @@ exports[`App once loading is complete renders correctly 1`] = `
         Sign in with GitHub
       </a>
     </p>
+    <p>
+      <a
+        href="/api/v1/auth/signout"
+      >
+        Sign out
+      </a>
+    </p>
   </main>
 </div>
 `;
@@ -43,6 +50,13 @@ exports[`App while loading renders correctly 1`] = `
         href="/api/v1/auth/github/authorize"
       >
         Sign in with GitHub
+      </a>
+    </p>
+    <p>
+      <a
+        href="/api/v1/auth/signout"
+      >
+        Sign out
       </a>
     </p>
   </main>

@@ -12,6 +12,9 @@ export function App() {
             <p>
               <a href="/api/v1/auth/github/authorize">Sign in with GitHub</a>
             </p>
+            <p>
+              <a href="/api/v1/auth/signout">Sign out</a>
+            </p>
           </main>
         </Suspense>
       </ErrorBoundary>
