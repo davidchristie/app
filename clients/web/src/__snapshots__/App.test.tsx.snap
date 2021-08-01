@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App once loading is complete renders correctly 1`] = `
+<div
+  data-testid="App"
+>
+  <header
+    data-testid="Header"
+  >
+    <pre>
+      {
+  "user": {
+    "id": "97406d59-7a49-4f1e-bb79-aba34cfcb405",
+    "name": "Test User",
+    "email": "test_user@email.com"
+  }
+}
+    </pre>
+  </header>
+</div>
+`;
+
+exports[`App while loading renders correctly 1`] = `
+<div
+  data-testid="App"
+>
+  <div
+    data-testid="App__loading"
+  >
+    Loading...
+  </div>
+</div>
+`;

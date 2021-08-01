@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GET /api/v1/auth/session responds correctly 1`] = `
+Object {
+  "user": Object {
+    "email": "test_user@email.com",
+    "id": "97406d59-7a49-4f1e-bb79-aba34cfcb405",
+    "name": "Test User",
+  },
+}
+`;

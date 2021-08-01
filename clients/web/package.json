@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "swr": "^0.5.6",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "devDependencies": {
+    "@jest/types": "^27.0.6",
+    "@testing-library/dom": "^8.1.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@types/jest": "^26.0.24",
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
+    "@types/webpack-dev-server": "^3.11.5",
+    "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.0.6",
+    "msw": "^0.33.2",
+    "rimraf": "^2.7.1",
+    "ts-jest": "^27.0.4",
+    "ts-loader": "^9.2.4",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5",
+    "webpack": "^5.47.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "name": "@app/web",
+  "scripts": {
+    "build": "rimraf build && webpack",
+    "start": "webpack serve",
+    "test": "jest --coverage --verbose",
+    "update-snapshots": "jest --updateSnapshot"
+  }
+}
