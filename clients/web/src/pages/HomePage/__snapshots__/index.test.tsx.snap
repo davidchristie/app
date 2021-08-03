@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage renders correctly 1`] = `
+<div
+  class="MuiBox-root MuiBox-root-1"
+  data-testid="HomePage"
+>
+  <div
+    class="MuiBox-root MuiBox-root-2"
+    data-testid="Page"
+  >
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"
+      data-testid="AppBar"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-5"
+        >
+          <a
+            class="MuiTypography-root makeStyles-title-3 MuiTypography-h6"
+            href="/"
+          >
+            App
+          </a>
+          <div
+            class="MuiBox-root MuiBox-root-6"
+          >
+            <a
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
+              data-testid="AppBar__signOutButton"
+              href="/api/v1/auth/signout"
+              tabindex="0"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Sign out
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div
+      class="MuiContainer-root MuiContainer-maxWidthLg"
+      data-testid="MainContent"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-7"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2"
+          data-testid="PageHeading"
+        >
+          Home
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+`;

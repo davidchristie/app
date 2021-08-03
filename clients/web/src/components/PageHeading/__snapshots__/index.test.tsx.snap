@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageHeading renders correctly 1`] = `
+<h2
+  class="MuiTypography-root MuiTypography-h2"
+  data-testid="PageHeading"
+>
+  <div
+    data-testid="children"
+  />
+</h2>
+`;

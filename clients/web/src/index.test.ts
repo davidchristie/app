@@ -1,4 +1,4 @@
-import { getByTestId } from "@testing-library/dom";
+import { getByTestId } from "./testing";
 
 describe("when module is loaded", () => {
   let container: HTMLElement;

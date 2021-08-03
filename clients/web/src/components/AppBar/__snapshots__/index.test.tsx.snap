@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppBar loading renders correctly 1`] = `
+<header
+  class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"
+  data-testid="AppBar"
+>
+  <div
+    class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-3"
+    >
+      <a
+        class="MuiTypography-root makeStyles-title-1 MuiTypography-h6"
+        href="/"
+      >
+        App
+      </a>
+      <div
+        class="MuiBox-root MuiBox-root-4"
+      />
+    </div>
+  </div>
+</header>
+`;
+
+exports[`AppBar signed in renders correctly 1`] = `
+<header
+  class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"
+  data-testid="AppBar"
+>
+  <div
+    class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-7"
+    >
+      <a
+        class="MuiTypography-root makeStyles-title-5 MuiTypography-h6"
+        href="/"
+      >
+        App
+      </a>
+      <div
+        class="MuiBox-root MuiBox-root-8"
+      >
+        <a
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
+          data-testid="AppBar__signOutButton"
+          href="/api/v1/auth/signout"
+          tabindex="0"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Sign out
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`AppBar signed out renders correctly 1`] = `
+<header
+  class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"
+  data-testid="AppBar"
+>
+  <div
+    class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-11"
+    >
+      <a
+        class="MuiTypography-root makeStyles-title-9 MuiTypography-h6"
+        href="/"
+      >
+        App
+      </a>
+      <div
+        class="MuiBox-root MuiBox-root-12"
+      >
+        <a
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-colorInherit"
+          data-testid="AppBar__signInButton"
+          href="/signin"
+          role="button"
+          tabindex="0"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Sign in
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+`;
