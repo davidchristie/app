@@ -3,6 +3,25 @@ name: Build Test Deploy
 on: [push]
 
 jobs:
+  acceptance-tests:
+    name: Acceptance Tests
+    strategy:
+      matrix:
+        node-version: [16.x]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Start services
+        run: docker-compose up --build --detach
+      - name: Run acceptance tests
+        run: npm run acceptance-tests
+
   unit-tests-go:
     name: Unit Tests (Go)
     strategy:

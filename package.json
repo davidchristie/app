@@ -1,12 +1,14 @@
 {
   "name": "app",
   "scripts": {
+    "acceptance-tests": "npm run cypress --workspace @app/acceptance",
     "build": "npm run build --workspace @app/web",
     "start": "npm start --workspace @app/web",
     "test": "npm test --if-present --workspaces",
     "update-snapshots": "npm run update-snapshots --if-present --workspaces"
   },
   "workspaces": [
-    "clients/web"
+    "clients/web",
+    "tests/acceptance"
   ]
 }
