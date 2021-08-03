@@ -1,23 +1,21 @@
-import { Suspense } from "react";
-import { ErrorBoundary } from "./components/ErrorBoundary";
-import { Header } from "./components/Header";
+import { Box, CssBaseline } from "@material-ui/core";
+import { ErrorBoundary } from "react-error-boundary";
+import { BrowserRouter } from "react-router-dom";
+import { ApiProvider } from "./api";
+import { ErrorPage } from "./pages/ErrorPage";
+import { Routes } from "./Routes";
 
 export function App() {
   return (
-    <div data-testid="App">
-      <ErrorBoundary>
-        <Suspense fallback={<div data-testid="App__loading">Loading...</div>}>
-          <Header />
-          <main>
-            <p>
-              <a href="/api/v1/auth/github/authorize">Sign in with GitHub</a>
-            </p>
-            <p>
-              <a href="/api/v1/auth/signout">Sign out</a>
-            </p>
-          </main>
-        </Suspense>
-      </ErrorBoundary>
-    </div>
+    <ErrorBoundary FallbackComponent={ErrorPage}>
+      <Box data-testid="App">
+        <CssBaseline />
+        <ApiProvider>
+          <BrowserRouter>
+            <Routes />
+          </BrowserRouter>
+        </ApiProvider>
+      </Box>
+    </ErrorBoundary>
   );
 }

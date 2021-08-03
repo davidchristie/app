@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page renders correctly 1`] = `
+<div
+  class="MuiBox-root MuiBox-root-1"
+  data-testid="Page"
+>
+  <div
+    data-testid="children"
+  />
+</div>
+`;

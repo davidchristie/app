@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorPage renders correctly 1`] = `
+<div
+  class="MuiBox-root MuiBox-root-1"
+  data-testid="ErrorPage"
+>
+  <div
+    class="MuiBox-root MuiBox-root-2"
+    data-testid="Page"
+  >
+    <div
+      class="MuiContainer-root MuiContainer-maxWidthLg"
+      data-testid="MainContent"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-3"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2"
+          data-testid="PageHeading"
+        >
+          Something went wrong
+        </h2>
+        <div
+          class="MuiBox-root MuiBox-root-4"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+            data-testid="ErrorPage__retryButton"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Retry
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
