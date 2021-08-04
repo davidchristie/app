@@ -22,6 +22,36 @@ jobs:
       - name: Run acceptance tests
         run: npm run acceptance-tests
 
+  gcp-deploy:
+    name: Build and Deploy (GCP)
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    env:
+      IMAGE: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_SERVICE }}:${{ github.sha }}
+      PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      REGION: ${{ secrets.GCP_REGION }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+      - name: Authorize Docker push
+        run: gcloud auth configure-docker
+      - name: Build and Push Container
+        run: |-
+          docker build -t ${{ env.IMAGE }} .
+          docker push ${{ env.IMAGE }}
+      - name: Deploy to Cloud Run
+        run: |-
+          gcloud run deploy "$PROJECT_ID" \
+            --allow-unauthenticated \
+            --image "$IMAGE" \
+            --region "$REGION"
+
   unit-tests-go:
     name: Unit Tests (Go)
     strategy:
