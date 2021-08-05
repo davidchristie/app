@@ -52,6 +52,24 @@ jobs:
             --image "$IMAGE" \
             --region "$REGION"
 
+  integration-tests:
+    name: Integration Tests
+    strategy:
+      matrix:
+        go-version: [1.16.x]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go ${{ matrix.go-version }}
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Start services
+        run: docker-compose up --detach postgres
+      - name: Run integration tests
+        run: go test ./tests/integration/...
+
   unit-tests-go:
     name: Unit Tests (Go)
     strategy:
@@ -66,7 +84,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run unit tests
-        run: go test ./... -cover
+        run: go test $(go list ./... | grep -v /tests/) -cover
 
   unit-tests-typescript:
     name: Unit Tests (TypeScript)

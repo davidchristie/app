@@ -1,4 +1,4 @@
-FROM golang:1.16 AS server-builder
+FROM golang:1.16 AS app-builder
 
 WORKDIR /usr/src/app
 
@@ -8,9 +8,9 @@ COPY go.mod go.sum ./
 
 RUN go mod download
 
-COPY services/server services/server
+COPY services/app services/app
 
-RUN go build ./services/server
+RUN go build ./services/app
 
 FROM node:16.5 as web-builder
 
@@ -28,10 +28,13 @@ RUN npm run build
 
 FROM alpine:3.14 as runtime
 
+ENV DATABASE_MIGRATIONS=file://migrations
+
 WORKDIR /usr/src/app
 
-COPY --from=server-builder /usr/src/app/server .
+COPY --from=app-builder /usr/src/app/app .
+COPY --from=app-builder /usr/src/app/services/app/migrations ./migrations/
 
 COPY --from=web-builder /usr/src/app/clients/web/build ./public
 
-ENTRYPOINT [ "./server" ]
+ENTRYPOINT [ "./app" ]
