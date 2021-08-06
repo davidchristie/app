@@ -6,6 +6,7 @@ import (
 
 	"github.com/davidchristie/app/services/app/auth"
 	"github.com/davidchristie/app/services/app/config"
+	"github.com/davidchristie/app/services/app/database"
 	"github.com/davidchristie/app/services/app/http"
 )
 
@@ -22,6 +23,10 @@ func initServer() {
 	if err != nil {
 		logFatal(err)
 		return
+	}
+	_, err = database.NewConnection(config)
+	if err != nil {
+		log.Println("Error connecting to database:", err) // TODO
 	}
 	auth := auth.NewAuth()
 	server = http.NewServer(config, auth)
