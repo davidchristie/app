@@ -43,9 +43,10 @@ func TestSession(t *testing.T) {
 			wantCode: http.StatusOK,
 			wantBody: map[string]interface{}{
 				"user": map[string]interface{}{
-					"id":    userID.String(),
-					"name":  userName,
-					"email": userEmail,
+					"id":         userID.String(),
+					"name":       userName,
+					"email":      userEmail,
+					"avatar_url": "",
 				},
 			},
 		},

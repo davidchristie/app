@@ -13,6 +13,8 @@ import (
 	"github.com/davidchristie/app/services/app/auth"
 	"github.com/davidchristie/app/services/app/config"
 	"github.com/davidchristie/app/services/app/http/handler"
+	"github.com/davidchristie/app/services/app/mocks"
+	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -23,6 +25,7 @@ var (
 )
 
 func TestNewHandler(t *testing.T) {
+	ctrl := gomock.NewController(t)
 	webDirectory, err := ioutil.TempDir("", "test_web_directory")
 	require.NoError(t, err)
 	defer os.RemoveAll(webDirectory)
@@ -49,7 +52,12 @@ func TestNewHandler(t *testing.T) {
 		{
 			name: "get_api_v1_auth_session",
 			args: args{
-				auth: auth.NewAuth(),
+				auth: auth.NewAuth(
+					config,
+					mocks.NewMockUserRepository(ctrl),
+					mocks.NewMockAccountRepository(ctrl),
+					mocks.NewMockSessionRepository(ctrl),
+				),
 			},
 			req: req{
 				method: "GET",
@@ -66,7 +74,12 @@ func TestNewHandler(t *testing.T) {
 		{
 			name: "get_api_unknown_url",
 			args: args{
-				auth: auth.NewAuth(),
+				auth: auth.NewAuth(
+					config,
+					mocks.NewMockUserRepository(ctrl),
+					mocks.NewMockAccountRepository(ctrl),
+					mocks.NewMockSessionRepository(ctrl),
+				),
 			},
 			req: req{
 				method: "GET",
@@ -78,7 +91,12 @@ func TestNewHandler(t *testing.T) {
 		{
 			name: "get_web_html",
 			args: args{
-				auth: auth.NewAuth(),
+				auth: auth.NewAuth(
+					config,
+					mocks.NewMockUserRepository(ctrl),
+					mocks.NewMockAccountRepository(ctrl),
+					mocks.NewMockSessionRepository(ctrl),
+				),
 			},
 			req: req{
 				method: "GET",
@@ -90,7 +108,12 @@ func TestNewHandler(t *testing.T) {
 		{
 			name: "get_web_root",
 			args: args{
-				auth: auth.NewAuth(),
+				auth: auth.NewAuth(
+					config,
+					mocks.NewMockUserRepository(ctrl),
+					mocks.NewMockAccountRepository(ctrl),
+					mocks.NewMockSessionRepository(ctrl),
+				),
 			},
 			req: req{
 				method: "GET",
@@ -102,7 +125,12 @@ func TestNewHandler(t *testing.T) {
 		{
 			name: "get_web_index_html",
 			args: args{
-				auth: auth.NewAuth(),
+				auth: auth.NewAuth(
+					config,
+					mocks.NewMockUserRepository(ctrl),
+					mocks.NewMockAccountRepository(ctrl),
+					mocks.NewMockSessionRepository(ctrl),
+				),
 			},
 			req: req{
 				method: "GET",
@@ -117,7 +145,12 @@ func TestNewHandler(t *testing.T) {
 		{
 			name: "get_web_other_url",
 			args: args{
-				auth: auth.NewAuth(),
+				auth: auth.NewAuth(
+					config,
+					mocks.NewMockUserRepository(ctrl),
+					mocks.NewMockAccountRepository(ctrl),
+					mocks.NewMockSessionRepository(ctrl),
+				),
 			},
 			req: req{
 				method: "GET",

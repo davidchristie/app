@@ -48,7 +48,7 @@ func WithSession(ctx context.Context, session *auth.Session) context.Context {
 func sessionToken(r *http.Request) string {
 	cookie, _ := r.Cookie(SessionTokenCookie)
 	if cookie != nil {
-		return cookie.String()
+		return cookie.Value
 	}
 	return ""
 }

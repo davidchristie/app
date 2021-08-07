@@ -13,6 +13,11 @@ func TestDefaultConfig(t *testing.T) {
 		DatabaseMigrations: "file://services/app/migrations",
 		DatabaseType:       "postgres",
 		DatabaseURL:        "postgres://user:password@localhost:5432/db?sslmode=disable",
+		GitHubRedirectURL:  "https://app-production-321806-o77vfhyfuq-ts.a.run.app/api/v1/auth/github/callback",
+		GitHubAuthURL:      "https://github.com/login/oauth/authorize",
+		GitHubTokenURL:     "https://github.com/login/oauth/access_token",
+		GitHubUserURL:      "https://api.github.com/user",
+		GitHubEmailsURL:    "https://api.github.com/user/emails",
 		Port:               4000,
 		WebDirectory:       "./public",
 	}, config.DefaultConfig())
@@ -34,13 +39,11 @@ func TestLoadConfig(t *testing.T) {
 			env: map[string]string{
 				"PORT": "8080",
 			},
-			want: &config.Config{
-				DatabaseMigrations: "file://services/app/migrations",
-				DatabaseType:       "postgres",
-				DatabaseURL:        "postgres://user:password@localhost:5432/db?sslmode=disable",
-				Port:               8080,
-				WebDirectory:       "./public",
-			},
+			want: (func() *config.Config {
+				config := config.DefaultConfig()
+				config.Port = 8080
+				return config
+			})(),
 		},
 		{
 			name: "invalid_port",
