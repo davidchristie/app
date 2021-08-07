@@ -8,6 +8,8 @@ import (
 
 	"github.com/davidchristie/app/services/app/auth"
 	"github.com/davidchristie/app/services/app/http/middleware"
+	"github.com/davidchristie/app/services/app/mocks"
+	"github.com/golang/mock/gomock"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -31,6 +33,7 @@ func TestSession(t *testing.T) {
 		ctx   context.Context
 		token string
 	}
+	ctrl := gomock.NewController(t)
 	tests := []struct {
 		name        string
 		args        args
@@ -40,7 +43,11 @@ func TestSession(t *testing.T) {
 		{
 			name: "valid_session_token",
 			args: args{
-				auth: auth.NewAuth(),
+				auth: (func() auth.Auth {
+					mock := mocks.NewMockAuth(ctrl)
+					mock.EXPECT().Session(context.Background(), sessionToken).Return(&auth.Session{User: user}, nil)
+					return mock
+				})(),
 			},
 			req: req{
 				ctx:   context.Background(),
@@ -53,7 +60,11 @@ func TestSession(t *testing.T) {
 		{
 			name: "no_session_token",
 			args: args{
-				auth: auth.NewAuth(),
+				auth: (func() auth.Auth {
+					mock := mocks.NewMockAuth(ctrl)
+					mock.EXPECT().Session(context.Background(), "").Return(&auth.Session{User: nil}, nil)
+					return mock
+				})(),
 			},
 			req: req{
 				ctx: context.Background(),

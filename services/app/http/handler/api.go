@@ -18,7 +18,8 @@ func apiHandler(auth auth.Auth) http.Handler {
 func restV1Handler(auth auth.Auth) http.Handler {
 	r := chi.NewRouter()
 	r.Get("/auth/session", Session())
-	r.Get("/auth/{providerID}/authorize", Authorize())
+	r.Get("/auth/{providerID}/authorize", Authorize(auth))
+	r.Get("/auth/{providerID}/callback", OAuthCallback(auth))
 	r.Get("/auth/signout", SignOut())
 	return r
 }

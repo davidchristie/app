@@ -1,27 +1,19 @@
+//go:generate mockgen -destination ../mocks/account_repository.go -package mocks github.com/davidchristie/app/services/app/repositories AccountRepository
+
 package repositories
 
 import (
 	"context"
 	"database/sql"
-	"time"
 
+	"github.com/davidchristie/app/services/app/entities"
 	"github.com/google/uuid"
 )
 
 type AccountRepository interface {
-	FindByID(ctx context.Context, id uuid.UUID) (*Account, error)
-	FindByProvider(ctx context.Context, providerType, providerID, providerAccountID string) (*Account, error)
-	Insert(ctx context.Context, account *Account) error
-}
-
-type Account struct {
-	ID                uuid.UUID
-	CreatedAt         time.Time
-	UpdatedAt         time.Time
-	ProviderType      string
-	ProviderID        string
-	ProviderAccountID string
-	UserID            uuid.UUID
+	FindByID(ctx context.Context, id uuid.UUID) (*entities.Account, error)
+	FindByProvider(ctx context.Context, providerType, providerID, providerAccountID string) (*entities.Account, error)
+	Insert(ctx context.Context, account *entities.Account) error
 }
 
 type accountRepository struct {
@@ -34,13 +26,13 @@ func NewAccountRepository(db *sql.DB) AccountRepository {
 	}
 }
 
-func (a *accountRepository) FindByID(ctx context.Context, id uuid.UUID) (*Account, error) {
+func (a *accountRepository) FindByID(ctx context.Context, id uuid.UUID) (*entities.Account, error) {
 	const query = `
 		SELECT id, created_at, updated_at, provider_type, provider_id, provider_account_id, user_id FROM accounts
 		WHERE id = $1
 	`
 	row := a.db.QueryRowContext(ctx, query, id)
-	account := Account{}
+	account := entities.Account{}
 	if err := row.Scan(
 		&account.ID,
 		&account.CreatedAt,
@@ -51,14 +43,14 @@ func (a *accountRepository) FindByID(ctx context.Context, id uuid.UUID) (*Accoun
 		&account.UserID,
 	); err != nil {
 		if err == sql.ErrNoRows {
-			return nil, ErrNotFound
+			return nil, ErrRecordNotFound
 		}
 		return nil, err
 	}
 	return &account, nil
 }
 
-func (a *accountRepository) FindByProvider(ctx context.Context, providerType, providerID, providerAccountID string) (*Account, error) {
+func (a *accountRepository) FindByProvider(ctx context.Context, providerType, providerID, providerAccountID string) (*entities.Account, error) {
 	const query = `
 		SELECT id, created_at, updated_at, provider_type, provider_id, provider_account_id, user_id FROM accounts
 		WHERE provider_type = $1
@@ -66,7 +58,7 @@ func (a *accountRepository) FindByProvider(ctx context.Context, providerType, pr
 		AND provider_account_id = $3
 	`
 	row := a.db.QueryRowContext(ctx, query, providerType, providerID, providerAccountID)
-	account := Account{}
+	account := entities.Account{}
 	if err := row.Scan(
 		&account.ID,
 		&account.CreatedAt,
@@ -77,14 +69,14 @@ func (a *accountRepository) FindByProvider(ctx context.Context, providerType, pr
 		&account.UserID,
 	); err != nil {
 		if err == sql.ErrNoRows {
-			return nil, ErrNotFound
+			return nil, ErrRecordNotFound
 		}
 		return nil, err
 	}
 	return &account, nil
 }
 
-func (a *accountRepository) Insert(ctx context.Context, account *Account) error {
+func (a *accountRepository) Insert(ctx context.Context, account *entities.Account) error {
 	const query = `
 		INSERT INTO accounts (id, created_at, updated_at, provider_type, provider_id, provider_account_id, user_id)
 		VALUES ($1, $2, $3, $4, $5, $6, $7);

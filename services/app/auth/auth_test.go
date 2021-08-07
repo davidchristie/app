@@ -1,10 +1,12 @@
 package auth_test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/davidchristie/app/services/app/auth"
+	"github.com/davidchristie/app/services/app/config"
+	"github.com/davidchristie/app/services/app/mocks"
+	"github.com/golang/mock/gomock"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 )
@@ -25,59 +27,16 @@ func TestNewAuth(t *testing.T) {
 			name: "default",
 		},
 	}
+	ctrl := gomock.NewController(t)
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			auth := auth.NewAuth()
+			auth := auth.NewAuth(
+				config.DefaultConfig(),
+				mocks.NewMockUserRepository(ctrl),
+				mocks.NewMockAccountRepository(ctrl),
+				mocks.NewMockSessionRepository(ctrl),
+			)
 			assert.NotNil(t, auth)
-			testSession(t, auth)
 		})
 	}
-}
-
-func testSession(t *testing.T, a auth.Auth) {
-	t.Run("Session", func(t *testing.T) {
-		type args struct {
-			ctx   context.Context
-			token string
-		}
-		tests := []struct {
-			name    string
-			args    args
-			want    *auth.Session
-			wantErr string
-		}{
-			{
-				name: "valid_token",
-				args: args{
-					ctx:   context.Background(),
-					token: sessionToken,
-				},
-				want: &auth.Session{
-					User: &auth.User{
-						ID:    userID,
-						Name:  userName,
-						Email: userEmail,
-					},
-				},
-			},
-			{
-				name: "no_token",
-				args: args{
-					ctx: context.Background(),
-				},
-				want: &auth.Session{
-					User: nil,
-				},
-			},
-		}
-		for _, tt := range tests {
-			t.Run(tt.name, func(t *testing.T) {
-				session, err := a.Session(tt.args.ctx, tt.args.token)
-				assert.Equal(t, tt.want, session)
-				if err != nil || tt.wantErr != "" {
-					assert.EqualError(t, err, tt.wantErr)
-				}
-			})
-		}
-	})
 }

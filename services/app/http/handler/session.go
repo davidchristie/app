@@ -14,9 +14,10 @@ type sessionResponseBody struct {
 }
 
 type user struct {
-	ID    uuid.UUID `copier:"must,nopanic" json:"id"`
-	Name  string    `copier:"must,nopanic" json:"name"`
-	Email string    `copier:"must,nopanic" json:"email"`
+	ID        uuid.UUID `copier:"must,nopanic" json:"id"`
+	Name      string    `copier:"must,nopanic" json:"name"`
+	Email     string    `copier:"must,nopanic" json:"email"`
+	AvatarURL *string   `copier:"must,nopanic" json:"avatar_url"`
 }
 
 func Session() http.HandlerFunc {

@@ -1,4 +1,4 @@
-package auth
+package utilities
 
 import (
 	"crypto/rand"
@@ -11,4 +11,12 @@ func GenerateSecureToken(length int) (string, error) {
 		return "", err
 	}
 	return hex.EncodeToString(bytes), nil
+}
+
+func MustGenerateSecureToken(length int) string {
+	token, err := GenerateSecureToken(length)
+	if err != nil {
+		panic(token)
+	}
+	return token
 }
