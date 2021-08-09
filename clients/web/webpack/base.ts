@@ -24,7 +24,7 @@ const config: Config = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "..", "build"),
     publicPath: "/",
   },
   plugins: [
