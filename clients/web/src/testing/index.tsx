@@ -2,7 +2,7 @@ import { ReactElement, ReactNode } from "react";
 import { render, RenderOptions } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { SWRConfig } from "swr";
-import { MockApiProvider } from "../api/mock";
+import { MockApiProvider } from "./mocks";
 
 interface DefaultWrapperProps {
   children?: ReactNode;

@@ -1,6 +1,6 @@
-import { MockApiProvider } from "../../api";
 import { getByTestId, render, screen } from "../../testing";
 import { signedInSession, signedOutSession } from "../../testing/data";
+import { MockApiProvider } from "../../testing/mocks";
 import { AppBar } from ".";
 
 describe("AppBar", () => {
@@ -21,7 +21,7 @@ describe("AppBar", () => {
         </MockApiProvider>
       );
       const element = screen.getByTestId("AppBar");
-      expect(getByTestId(element, "AppBar__signOutButton")).toBeDefined();
+      expect(getByTestId(element, "UserMenu")).toBeDefined();
       expect(element).toBe(container.firstChild);
       expect(element).toMatchSnapshot();
     });

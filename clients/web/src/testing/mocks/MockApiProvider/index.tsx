@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
-import { ApiContext } from "./context";
-import { Api, Session, UseQuery } from "./types";
+import { ApiContext } from "../../../api/context";
+import { Api, Session, UseQuery } from "../../../api/types";
 
 export interface MockApiData {
   authorize?: () => void;
   session?: Session | Error;
+  signOut?: () => void;
 }
 
 export interface MockApiProviderProps {
@@ -40,6 +41,7 @@ export function MockApiProvider({
   const api: Api = {
     useAuthorize: () => data.authorize ?? jest.fn(),
     useSession: createQueryHook(data.session),
+    useSignOut: () => data.signOut ?? jest.fn(),
   };
   return <ApiContext.Provider value={api}>{children}</ApiContext.Provider>;
 }

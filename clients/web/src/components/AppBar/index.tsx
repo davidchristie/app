@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useApi } from "../../api";
+import { UserMenu } from "../UserMenu";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -34,6 +35,7 @@ export function AppBar(): JSX.Element {
     <MuiAppBar color="default" data-testid="AppBar" position="static">
       <Toolbar>
         <Box
+          alignItems="center"
           display="flex"
           height="100%"
           justifyContent="space-between"
@@ -64,16 +66,7 @@ export function AppBar(): JSX.Element {
                   </>
                 )}
                 {session.data.user !== null && (
-                  <>
-                    <Button
-                      color="inherit"
-                      component="a"
-                      data-testid="AppBar__signOutButton"
-                      href="/api/v1/auth/signout"
-                    >
-                      Sign out
-                    </Button>
-                  </>
+                  <UserMenu user={session.data.user} />
                 )}
               </>
             )}
