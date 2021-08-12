@@ -1,6 +1,6 @@
-import { MockApiProvider } from "../../api";
 import { render, screen } from "../../testing";
 import { signedInSession } from "../../testing/data";
+import { MockApiProvider } from "../../testing/mocks";
 import { SignInPage } from ".";
 
 describe("SignInPage", () => {

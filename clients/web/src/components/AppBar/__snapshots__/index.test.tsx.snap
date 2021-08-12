@@ -45,22 +45,35 @@ exports[`AppBar signed in renders correctly 1`] = `
       <div
         class="MuiBox-root MuiBox-root-8"
       >
-        <a
-          aria-disabled="false"
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
-          data-testid="AppBar__signOutButton"
-          href="/api/v1/auth/signout"
-          tabindex="0"
+        <div
+          class="MuiBox-root MuiBox-root-9"
+          data-testid="UserMenu"
         >
-          <span
-            class="MuiButton-label"
+          <button
+            aria-controls="user-menu"
+            aria-haspopup="true"
+            class="MuiButtonBase-root MuiIconButton-root"
+            data-testid="UserMenu__iconButton"
+            tabindex="0"
+            type="button"
           >
-            Sign out
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </a>
+            <span
+              class="MuiIconButton-label"
+            >
+              <div
+                class="MuiAvatar-root MuiAvatar-circular"
+              >
+                <img
+                  class="MuiAvatar-img"
+                  src="https://via.placeholder.com/150"
+                />
+              </div>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -76,16 +89,16 @@ exports[`AppBar signed out renders correctly 1`] = `
     class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
   >
     <div
-      class="MuiBox-root MuiBox-root-11"
+      class="MuiBox-root MuiBox-root-12"
     >
       <a
-        class="MuiTypography-root makeStyles-title-9 MuiTypography-h6"
+        class="MuiTypography-root makeStyles-title-10 MuiTypography-h6"
         href="/"
       >
         App
       </a>
       <div
-        class="MuiBox-root MuiBox-root-12"
+        class="MuiBox-root MuiBox-root-13"
       >
         <a
           aria-disabled="false"

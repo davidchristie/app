@@ -1,7 +1,7 @@
 import { StaticRouter } from "react-router-dom";
-import { MockApiProvider } from "./api";
 import { render, screen } from "./testing";
 import { signedInSession, signedOutSession } from "./testing/data";
+import { MockApiProvider } from "./testing/mocks";
 import { Routes } from "./Routes";
 
 describe("Routes", () => {

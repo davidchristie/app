@@ -1,6 +1,7 @@
 export interface Api {
-  useAuthorize(): (providerId: string) => void;
+  useAuthorize: () => (providerId: string) => void;
   useSession: UseQuery<Session>;
+  useSignOut: () => () => void;
 }
 
 export interface Session {
@@ -21,4 +22,5 @@ export interface User {
   id: string;
   name: string;
   email: string;
+  avatarUrl: string;
 }

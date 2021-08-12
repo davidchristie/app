@@ -1,7 +1,7 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react-hooks";
 import { signedInSession } from "../testing/data";
+import { MockApiProvider } from "../testing/mocks";
 import { useApi } from "./hook";
-import { MockApiProvider } from "./mock";
 
 describe("useApi", () => {
   it("returns data from the API context", () => {

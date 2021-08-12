@@ -18,6 +18,6 @@ describe("Sign In Page", () => {
       .should("be.visible")
       .click();
 
-    cy.getTestId("AppBar__signOutButton").should("be.visible");
+    cy.getTestId("UserMenu").should("be.visible");
   });
 });
