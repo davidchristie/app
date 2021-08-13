@@ -58,12 +58,25 @@ exports[`UserMenu when icon button is clicked renders user menu 1`] = `
       role="menu"
       tabindex="-1"
     >
-      <li
+      <a
         aria-disabled="false"
         class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button Mui-focusVisible Mui-focusVisible"
-        data-testid="UserMenu__signOut"
+        data-testid="UserMenu__settings"
+        href="/settings"
         role="menuitem"
         tabindex="0"
+      >
+        Settings
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </a>
+      <li
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+        data-testid="UserMenu__signOut"
+        role="menuitem"
+        tabindex="-1"
       >
         Sign out
         <span

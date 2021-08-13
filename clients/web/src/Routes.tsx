@@ -1,7 +1,9 @@
 import { Route, RouteProps, Switch } from "react-router-dom";
 import { useApi } from "./api";
+import { ProgressBackdrop } from "./components/ProgressBackdrop";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { SettingsPage } from "./pages/SettingsPage";
 import { SignInPage } from "./pages/SignInPage";
 
 const authenticatedRoutes: RouteProps[] = [
@@ -9,6 +11,11 @@ const authenticatedRoutes: RouteProps[] = [
     exact: true,
     path: "/",
     component: HomePage,
+  },
+  {
+    exact: true,
+    path: "/settings",
+    component: SettingsPage,
   },
   {
     path: "*",
@@ -37,7 +44,7 @@ export function Routes(): JSX.Element {
   const { useSession } = useApi();
   const session = useSession();
   if (session.data === undefined) {
-    return <>Loading...</>; // TODO
+    return <ProgressBackdrop open />;
   }
   const routes =
     session.data.user === null ? unauthenticatedRoutes : authenticatedRoutes;

@@ -18,6 +18,10 @@ describe("Routes", () => {
         expectedTestId: "HomePage",
         url: "/",
       },
+      {
+        expectedTestId: "SettingsPage",
+        url: "/settings",
+      },
     ];
 
     routes.forEach(({ expectedTestId, url }) => {
