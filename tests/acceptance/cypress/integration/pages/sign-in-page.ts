@@ -1,5 +1,9 @@
 describe("Sign In Page", () => {
   beforeEach(() => {
+    cy.intercept("/api/v1/auth/session", {
+      fixture: "session/signed-out.json",
+    });
+
     cy.visit("/signin");
   });
 
@@ -9,15 +13,5 @@ describe("Sign In Page", () => {
 
   it("has page heading", () => {
     cy.getTestId("PageHeading").should("contain.text", "Sign In");
-  });
-
-  it("can sign in with GitHub", () => {
-    cy.getTestId("AppBar__signInButton").should("be.visible").click();
-
-    cy.getTestId("SignInPage__authorizeButton-github")
-      .should("be.visible")
-      .click();
-
-    cy.getTestId("UserMenu").should("be.visible");
   });
 });
