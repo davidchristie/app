@@ -18,6 +18,10 @@ func TestDefaultConfig(t *testing.T) {
 		GitHubTokenURL:     "https://github.com/login/oauth/access_token",
 		GitHubUserURL:      "https://api.github.com/user",
 		GitHubEmailsURL:    "https://api.github.com/user/emails",
+		GoogleRedirectURL:  "https://app-production-321806-o77vfhyfuq-ts.a.run.app/api/v1/auth/google/callback",
+		GoogleAuthURL:      "https://accounts.google.com/o/oauth2/auth",
+		GoogleTokenURL:     "https://oauth2.googleapis.com/token",
+		GoogleUserURL:      "https://www.googleapis.com/oauth2/v3/userinfo",
 		Port:               4000,
 		WebDirectory:       "./public",
 	}, config.DefaultConfig())

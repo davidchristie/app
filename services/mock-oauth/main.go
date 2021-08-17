@@ -31,6 +31,7 @@ func main() {
 	router.Post("/access_token", accessTokenHandler())
 	router.Get("/github/emails", serveJSONFile("./services/mock-oauth/data/github/emails.json"))
 	router.Get("/github/user", serveJSONFile("./services/mock-oauth/data/github/user.json"))
+	router.Get("/google/user", serveJSONFile("./services/mock-oauth/data/google/user.json"))
 	fmt.Printf("Port: %v\n", config.Port)
 	server := &http.Server{
 		Addr:         fmt.Sprintf(":%v", config.Port),

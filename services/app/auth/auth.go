@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/davidchristie/app/services/app/auth/github"
+	"github.com/davidchristie/app/services/app/auth/google"
 	"github.com/davidchristie/app/services/app/config"
 	"github.com/davidchristie/app/services/app/entities"
 	"github.com/davidchristie/app/services/app/repositories"
@@ -102,6 +103,31 @@ func NewAuth(
 					profile.PrimaryEmail = primaryEmail
 				}
 				return &profile, nil
+			},
+		},
+		"google": {
+			Config: &oauth2.Config{
+				ClientID:     config.GoogleClientID,
+				ClientSecret: config.GoogleClientSecret,
+				Endpoint: oauth2.Endpoint{
+					AuthURL:  config.GoogleAuthURL,
+					TokenURL: config.GoogleTokenURL,
+				},
+				RedirectURL: config.GoogleRedirectURL,
+				Scopes:      []string{"email", "profile"},
+			},
+			State: utilities.MustGenerateSecureToken(32),
+			FetchProfile: func(client *http.Client) (*Profile, error) {
+				user, err := google.FetchUser(client, config.GoogleUserURL)
+				if err != nil {
+					return nil, err
+				}
+				return &Profile{
+					ID:           user.Sub,
+					PrimaryEmail: user.Email,
+					FullName:     user.Name,
+					AvatarURL:    user.Picture,
+				}, nil
 			},
 		},
 	}

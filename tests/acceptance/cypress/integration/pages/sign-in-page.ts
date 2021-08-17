@@ -14,4 +14,18 @@ describe("Sign In Page", () => {
   it("has page heading", () => {
     cy.getTestId("PageHeading").should("contain.text", "Sign In");
   });
+
+  it("has GitHub sign in button", () => {
+    cy.getTestId("SignInPage__GitHubAuthorizeButton").should(
+      "contain.text",
+      "Sign in with GitHub"
+    );
+  });
+
+  it("has Google sign in button", () => {
+    cy.getTestId("SignInPage__GoogleAuthorizeButton").should(
+      "contain.text",
+      "Sign in with Google"
+    );
+  });
 });

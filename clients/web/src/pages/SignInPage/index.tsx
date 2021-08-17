@@ -17,11 +17,21 @@ export function SignInPage(): JSX.Element {
           <Box marginTop={4}>
             <Button
               component="a"
-              data-testid="SignInPage__authorizeButton-github"
+              data-testid="SignInPage__GitHubAuthorizeButton"
               onClick={() => authorize("github")}
               variant="contained"
             >
               Sign in with GitHub
+            </Button>
+          </Box>
+          <Box marginTop={4}>
+            <Button
+              component="a"
+              data-testid="SignInPage__GoogleAuthorizeButton"
+              onClick={() => authorize("google")}
+              variant="contained"
+            >
+              Sign in with Google
             </Button>
           </Box>
         </MainContent>
