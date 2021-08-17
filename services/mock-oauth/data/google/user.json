@@ -1,0 +1,10 @@
+{
+  "sub": "1",
+  "name": "Test User",
+  "given_name": "Test",
+  "family_name": "User",
+  "picture": "https://via.placeholder.com/150",
+  "email": "test_user@email.com",
+  "email_verified": true,
+  "locale": "en-GB"
+}

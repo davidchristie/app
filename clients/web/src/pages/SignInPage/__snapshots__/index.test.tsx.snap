@@ -28,35 +28,23 @@ exports[`SignInPage renders correctly 1`] = `
           <div
             class="MuiBox-root MuiBox-root-6"
           >
-            <div
-              class="MuiBox-root MuiBox-root-7"
-              data-testid="UserMenu"
+            <a
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-colorInherit"
+              data-testid="AppBar__signInButton"
+              href="/signin"
+              role="button"
+              tabindex="0"
             >
-              <button
-                aria-controls="user-menu"
-                aria-haspopup="true"
-                class="MuiButtonBase-root MuiIconButton-root"
-                data-testid="UserMenu__iconButton"
-                tabindex="0"
-                type="button"
+              <span
+                class="MuiButton-label"
               >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <div
-                    class="MuiAvatar-root MuiAvatar-circular"
-                  >
-                    <img
-                      class="MuiAvatar-img"
-                      src="https://via.placeholder.com/150"
-                    />
-                  </div>
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </button>
-            </div>
+                Sign in
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -66,7 +54,7 @@ exports[`SignInPage renders correctly 1`] = `
       data-testid="MainContent"
     >
       <div
-        class="MuiBox-root MuiBox-root-8"
+        class="MuiBox-root MuiBox-root-7"
       >
         <h2
           class="MuiTypography-root MuiTypography-h2"
@@ -75,12 +63,12 @@ exports[`SignInPage renders correctly 1`] = `
           Sign In
         </h2>
         <div
-          class="MuiBox-root MuiBox-root-9"
+          class="MuiBox-root MuiBox-root-8"
         >
           <a
             aria-disabled="false"
             class="MuiButtonBase-root MuiButton-root MuiButton-contained"
-            data-testid="SignInPage__authorizeButton-github"
+            data-testid="SignInPage__GitHubAuthorizeButton"
             role="button"
             tabindex="0"
           >
@@ -88,6 +76,26 @@ exports[`SignInPage renders correctly 1`] = `
               class="MuiButton-label"
             >
               Sign in with GitHub
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </a>
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-9"
+        >
+          <a
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+            data-testid="SignInPage__GoogleAuthorizeButton"
+            role="button"
+            tabindex="0"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Sign in with Google
             </span>
             <span
               class="MuiTouchRipple-root"

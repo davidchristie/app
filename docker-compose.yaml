@@ -11,6 +11,12 @@ services:
       - GITHUB_TOKEN_URL=http://mock-oauth:8888/access_token
       - GITHUB_USER_URL=http://mock-oauth:8888/github/user
       - GITHUB_EMAILS_URL=http://mock-oauth:8888/github/emails
+      # - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      # - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GOOGLE_REDIRECT_URL=http://localhost:8080/api/v1/auth/google/callback
+      - GOOGLE_AUTH_URL=http://localhost:8888/authorize
+      - GOOGLE_TOKEN_URL=http://mock-oauth:8888/access_token
+      - GOOGLE_USER_URL=http://mock-oauth:8888/google/user
       - PORT=8080
     ports:
       - 8080:8080
